@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI導入支援顧問サービス｜株式会社TRIXIA</title>
+  <meta name="description" content="北海道の中小企業に特化したAI導入支援。12ヶ月の伴走型プログラムで、AIを自走できる組織へ。完全オンライン対応。株式会社TRIXIA">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Shippori+Mincho:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #122040;
+      --navy-light: #1a3060;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-pale: #f5e8c0;
+      --white: #fdfcf8;
+      --off-white: #f0ece0;
+      --gray: #8a8a8a;
+      --text: #1a1a2e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ============ NAV ============ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(10,22,40,0.97);
+      box-shadow: 0 2px 30px rgba(0,0,0,0.3);
+    }
+    .nav-logo {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.3rem;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      font-weight: 700;
+    }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.78rem;
+      padding: 10px 22px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* ============ HERO ============ */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg-lines {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .hero-bg-lines::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 70%;
+      height: 140%;
+      background: linear-gradient(135deg, transparent 30%, rgba(201,168,76,0.06) 50%, transparent 70%);
+      transform: rotate(-15deg);
+    }
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Gold geometric accent */
+    .hero-diamond {
+      position: absolute;
+      right: 8%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 380px;
+      height: 380px;
+      border: 1px solid rgba(201,168,76,0.2);
+      transform: translateY(-50%) rotate(45deg);
+      animation: slowRotate 30s linear infinite;
+    }
+    .hero-diamond::before {
+      content: '';
+      position: absolute;
+      inset: 30px;
+      border: 1px solid rgba(201,168,76,0.12);
+    }
+    @keyframes slowRotate {
+      to { transform: translateY(-50%) rotate(405deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 8%;
+      max-width: 820px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 6px 18px;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.3s;
+    }
+
+    .hero-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      color: var(--white);
+      line-height: 1.45;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.5s;
+    }
+    .hero-title .gold-line {
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      color: rgba(253,252,248,0.65);
+      line-height: 1.9;
+      margin-bottom: 50px;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.7s;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 18px 48px;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.9s;
+      transition: transform 0.2s;
+    }
+    .hero-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--white);
+      transform: translateX(-100%);
+      transition: transform 0.35s ease;
+      opacity: 0.15;
+    }
+    .hero-btn:hover::after { transform: translateX(0); }
+    .hero-btn:hover { transform: translateY(-2px); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 1.5s;
+    }
+    .hero-scroll span {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: rgba(201,168,76,0.6);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* ============ SECTION BASE ============ */
+    section { padding: 100px 8%; }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .section-title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 1.5;
+      letter-spacing: 0.04em;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .section-title.light { color: var(--white); }
+    .gold-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 48px;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============ PROBLEMS ============ */
+    #problems {
+      background: var(--off-white);
+      position: relative;
+    }
+    #problems::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy), var(--gold), var(--navy));
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 0;
+    }
+    .problem-card {
+      background: var(--white);
+      border-left: 3px solid var(--gold);
+      padding: 32px 28px;
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .problem-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(10,22,40,0.12);
+    }
+    .problem-num {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 2.5rem;
+      color: rgba(201,168,76,0.18);
+      position: absolute;
+      top: 16px; right: 20px;
+      line-height: 1;
+      font-weight: 700;
+    }
+    .problem-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+    }
+    .problem-card p {
+      font-size: 0.83rem;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    /* ============ ABOUT ============ */
+    #about {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    #about::after {
+      content: 'TRIXIA';
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      font-family: 'Shippori Mincho', serif;
+      font-size: 10rem;
+      color: rgba(201,168,76,0.04);
+      font-weight: 700;
+      pointer-events: none;
+      letter-spacing: 0.1em;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-text p {
+      color: rgba(253,252,248,0.72);
+      line-height: 2;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+    .about-text p strong {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .stat-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 36px 28px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .stat-box:hover { background: rgba(201,168,76,0.07); }
+    .stat-num {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 2.8rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      color: rgba(253,252,248,0.5);
+      letter-spacing: 0.1em;
+      line-height: 1.5;
+    }
+
+    /* ============ STRENGTHS ============ */
+    #strengths {
+      background: var(--white);
+    }
+    .strength-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .strength-item {
+      border-top: 2px solid var(--navy);
+      padding-top: 28px;
+      position: relative;
+    }
+    .strength-num {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 3.5rem;
+      color: rgba(10,22,40,0.06);
+      position: absolute;
+      top: -10px; right: 0;
+      line-height: 1;
+      font-weight: 700;
+    }
+    .strength-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .strength-icon svg { width: 22px; height: 22px; }
+    .strength-item h3 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 14px;
+      line-height: 1.5;
+      letter-spacing: 0.03em;
+    }
+    .strength-item p {
+      font-size: 0.83rem;
+      color: #555;
+      line-height: 1.9;
+    }
+
+    /* ============ FLOW ============ */
+    #flow {
+      background: var(--navy);
+      position: relative;
+    }
+    .flow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      margin-top: 0;
+    }
+    .flow-steps::before {
+      content: '';
+      position: absolute;
+      left: 30px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold), rgba(201,168,76,0.1));
+    }
+    .flow-step {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      position: relative;
+    }
+    .flow-step:last-child { border-bottom: none; }
+    .step-dot {
+      width: 60px;
+      height: 60px;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .step-dot span {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.4rem;
+      color: var(--navy);
+      font-weight: 700;
+    }
+    .step-body h3 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+    }
+    .step-body p {
+      font-size: 0.85rem;
+      color: rgba(253,252,248,0.65);
+      line-height: 1.9;
+    }
+    .step-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      color: rgba(201,168,76,0.6);
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 3px 12px;
+      margin-bottom: 8px;
+    }
+
+    /* ============ PRICING ============ */
+    #pricing {
+      background: var(--off-white);
+    }
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .pricing-card {
+      background: var(--white);
+      border: 1px solid rgba(10,22,40,0.1);
+      padding: 44px 36px;
+      position: relative;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(10,22,40,0.1);
+    }
+    .pricing-card.featured {
+      background: var(--navy);
+      border-color: var(--gold);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -1px; left: 36px;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      padding: 5px 16px;
+    }
+    .pricing-card h3 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+    .pricing-card.featured h3 { color: var(--gold); }
+    .pricing-price {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1.8rem;
+      color: var(--navy);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    .pricing-card.featured .pricing-price { color: var(--white); }
+    .pricing-note {
+      font-size: 0.75rem;
+      color: var(--gray);
+      margin-bottom: 28px;
+    }
+    .pricing-card.featured .pricing-note { color: rgba(253,252,248,0.5); }
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pricing-features li {
+      font-size: 0.83rem;
+      color: #444;
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .pricing-card.featured .pricing-features li { color: rgba(253,252,248,0.72); }
+    .pricing-features li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.7rem;
+    }
+
+    /* ============ FAQ ============ */
+    #faq {
+      background: var(--white);
+    }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(10,22,40,0.08);
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .faq-q-text {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1rem;
+      color: var(--navy);
+      letter-spacing: 0.03em;
+      line-height: 1.5;
+    }
+    .faq-icon {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--gold);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--gold);
+    }
+    .faq-icon svg { width: 12px; height: 12px; }
+    .faq-icon.open svg path { stroke: var(--navy); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding-bottom: 24px;
+    }
+    .faq-a p {
+      font-size: 0.87rem;
+      color: #555;
+      line-height: 2;
+      padding-left: 2px;
+    }
+
+    /* ============ CTA ============ */
+    #cta {
+      background: var(--navy);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 50%, rgba(26,48,96,0.5) 0%, transparent 60%);
+    }
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .cta-inner .section-label { text-align: center; }
+    .cta-inner .section-title { text-align: center; margin-bottom: 16px; }
+    .cta-sub {
+      font-size: 0.87rem;
+      color: rgba(253,252,248,0.6);
+      line-height: 1.9;
+      margin-bottom: 48px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 20px 60px;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      margin-bottom: 20px;
+    }
+    .cta-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(201,168,76,0.3);
+    }
+    .cta-note {
+      font-size: 0.73rem;
+      color: rgba(253,252,248,0.35);
+      letter-spacing: 0.05em;
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: #070f1e;
+      padding: 48px 8% 32px;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 24px;
+    }
+    .footer-brand .nav-logo { font-size: 1.1rem; }
+    .footer-brand p {
+      font-size: 0.73rem;
+      color: rgba(255,255,255,0.3);
+      margin-top: 8px;
+      line-height: 1.7;
+    }
+    .footer-info {
+      font-size: 0.73rem;
+      color: rgba(255,255,255,0.3);
+      line-height: 2;
+      text-align: right;
+    }
+    .footer-copy {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.2);
+      text-align: center;
+      letter-spacing: 0.08em;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      section { padding: 72px 6%; }
+
+      .about-layout { grid-template-columns: 1fr; gap: 48px; }
+      .strength-list { grid-template-columns: 1fr; gap: 24px; }
+      .flow-steps::before { left: 22px; }
+      .step-dot { width: 44px; height: 44px; }
+      .step-dot span { font-size: 1.1rem; }
+
+      .hero-diamond { display: none; }
+      .hero-content { padding: 0 6%; }
+
+      .footer-inner { flex-direction: column; gap: 24px; }
+      .footer-info { text-align: left; }
+
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">TRIXIA</div>
+  <a href="#cta" class="nav-cta">無料相談を申し込む</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-lines">
+    <div class="grid-overlay"></div>
+  </div>
+  <div class="hero-diamond"></div>
+  <div class="hero-content">
+    <span class="hero-label">AI CONSULTING SERVICE</span>
+    <h1 class="hero-title">
+      AIで、<span class="gold-line">北海道を</span>日本の<br>最前線へ。
+    </h1>
+    <p class="hero-sub">
+      中小企業のためのAI導入支援顧問サービス。<br>
+      12ヶ月の伴走型プログラムで、あなたの会社を<br>
+      「AIを自走できる組織」へと進化させます。
+    </p>
+    <a href="#cta" class="hero-btn">無料相談を申し込む →</a>
+  </div>
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- PROBLEMS -->
+<section id="problems">
+  <div class="reveal">
+    <span class="section-label">CHALLENGE</span>
+    <h2 class="section-title">こんな課題は<br>ありませんか？</h2>
+    <div class="gold-rule"></div>
+  </div>
+  <div class="problem-grid reveal">
+    <div class="problem-card">
+      <span class="problem-num">01</span>
+      <h3>AIに興味はあるが<br>何から始めればいいかわからない</h3>
+      <p>ChatGPTなどのツールは知っているが、自社のどの業務に使えるのか、どう導入すればいいのかが不明瞭で一歩が踏み出せない。</p>
+    </div>
+    <div class="problem-card">
+      <span class="problem-num">02</span>
+      <h3>社内にAIを推進できる<br>人材・ノウハウがない</h3>
+      <p>IT担当者がいない、または担当者がいても知識不足でAI活用が進まない。外部頼みでは継続的な活用が難しい。</p>
+    </div>
+    <div class="problem-card">
+      <span class="problem-num">03</span>
+      <h3>導入コストが気になり<br>踏み切れない</h3>
+      <p>AI導入には費用がかかるイメージがあり、中小企業には敷居が高い。費用対効果を明確にしたうえで判断したい。</p>
+    </div>
+    <div class="problem-card">
+      <span class="problem-num">04</span>
+      <h3>一度試したが<br>定着しなかった経験がある</h3>
+      <p>以前AI系ツールを導入したが、現場に浸透せず形骸化してしまった。継続的な運用に繋げるための方法を知りたい。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-layout">
+    <div class="about-text reveal">
+      <span class="section-label">ABOUT SERVICE</span>
+      <h2 class="section-title light">TRIXIAの<br>AI導入支援とは</h2>
+      <div class="gold-rule"></div>
+      <p>
+        株式会社TRIXIAは、北海道札幌市を拠点に、
+        <strong>中小企業のAI活用を本気で支援する</strong>
+        顧問サービスを提供しています。
+      </p>
+      <p>
+        単なるツール導入で終わらせない。現場への定着、
+        業務改善の継続、そして<strong>「自走できる組織」</strong>
+        への進化——この3ステップを、12ヶ月の伴走プログラムで
+        実現します。
+      </p>
+      <p>
+        完全オンライン対応のため、北海道内はもちろん、
+        全国どこからでもご利用いただけます。
+      </p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="stat-box">
+        <div class="stat-num">300<span style="font-size:1.4rem">社</span></div>
+        <div class="stat-label">これまでの<br>支援実績</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">12<span style="font-size:1.4rem">ヶ月</span></div>
+        <div class="stat-label">伴走型<br>プログラム期間</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">100<span style="font-size:1.4rem">%</span></div>
+        <div class="stat-label">オンライン<br>完結対応</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">全国<span style="font-size:1.4rem">対応</span></div>
+        <div class="stat-label">北海道から<br>全国へ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section id="strengths">
+  <div class="reveal">
+    <span class="section-label">STRENGTHS</span>
+    <h2 class="section-title">TRIXIAが選ばれる<br>3つの理由</h2>
+    <div class="gold-rule"></div>
+  </div>
+  <div class="strength-list reveal">
+    <div class="strength-item">
+      <span class="strength-num">01</span>
+      <div class="strength-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+        </svg>
+      </div>
+      <h3>完全オンライン対応・<br>月次伴走型サポート</h3>
+      <p>移動不要の完全オンライン形式で、全国どこからでも利用可能。月次での定期ミーティングと日常的なチャットサポートで、継続的な改善をサポートします。</p>
+    </div>
+    <div class="strength-item">
+      <span class="strength-num">02</span>
+      <div class="strength-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2">
+          <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+        </svg>
+      </div>
+      <h3>12ヶ月で「自走できる組織」<br>をつくる体系的プログラム</h3>
+      <p>単発の研修や一時的なツール導入で終わらせない。4フェーズ・12ヶ月の構造化されたプログラムで、AIを業務の中核に定着させます。</p>
+    </div>
+    <div class="strength-item">
+      <span class="strength-num">03</span>
+      <div class="strength-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+      </div>
+      <h3>北海道の中小企業を<br>熟知した専門チーム</h3>
+      <p>札幌を拠点に、北海道の中小企業300社以上を支援してきた実績。地域の業界特性や経営課題を深く理解したコンサルタントが担当します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section id="flow">
+  <div class="reveal">
+    <span class="section-label">HOW IT WORKS</span>
+    <h2 class="section-title light">導入フロー</h2>
+    <div class="gold-rule"></div>
+  </div>
+  <div class="flow-steps reveal">
+    <div class="flow-step">
+      <div class="step-dot"><span>1</span></div>
+      <div class="step-body">
+        <div class="step-tag">PHASE 01 / 無料相談</div>
+        <h3>現状ヒアリング・課題整理</h3>
+        <p>まずは無料の相談会で、貴社の現状・業務フロー・課題を丁寧にヒアリング。AI活用の可能性と優先順位を一緒に整理します。</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-dot"><span>2</span></div>
+      <div class="step-body">
+        <div class="step-tag">PHASE 02 / Month 1–2</div>
+        <h3>デモンストレーション・効果検証</h3>
+        <p>実際の業務データを用いてAIツールをデモ。導入効果を数値で可視化し、費用対効果を経営者が判断できる状態をつくります。</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-dot"><span>3</span></div>
+      <div class="step-body">
+        <div class="step-tag">PHASE 03 / Month 3–6</div>
+        <h3>現場への導入・協働フェーズ</h3>
+        <p>実務の中にAIを組み込み、スタッフとともに活用を進めます。現場の声を拾いながら継続的に改善。抵抗感を減らし定着を促します。</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-dot"><span>4</span></div>
+      <div class="step-body">
+        <div class="step-tag">PHASE 04 / Month 7–10</div>
+        <h3>自立・内製化フェーズ</h3>
+        <p>社内にAI推進担当者を育成し、外部依存から脱却。自社でAIを改善・拡張できる体制を整備します。</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-dot"><span>5</span></div>
+      <div class="step-body">
+        <div class="step-tag">PHASE 05 / Month 11–12</div>
+        <h3>卒業・継続支援の選択</h3>
+        <p>12ヶ月プログラムの総括と成果評価。卒業後は自走継続またはアドバンスプログラムへの移行など、貴社の状況に合わせた選択肢をご提案します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="reveal">
+    <span class="section-label">PRICING</span>
+    <h2 class="section-title">料金プラン</h2>
+    <div class="gold-rule"></div>
+  </div>
+  <div class="pricing-cards reveal">
+    <div class="pricing-card">
+      <h3>スタンダードプラン</h3>
+      <div class="pricing-price">要相談</div>
+      <div class="pricing-note">月額顧問型 / 12ヶ月契約</div>
+      <ul class="pricing-features">
+        <li>月次オンラインミーティング（60分）</li>
+        <li>AI活用ロードマップ策定</li>
+        <li>ツール選定・設定サポート</li>
+        <li>チャットサポート（月〜金）</li>
+        <li>月次進捗レポート</li>
+      </ul>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-badge">RECOMMEND</div>
+      <h3>フルサポートプラン</h3>
+      <div class="pricing-price">要相談</div>
+      <div class="pricing-note">月額顧問型 / 12ヶ月契約</div>
+      <ul class="pricing-features">
+        <li>月次オンラインミーティング（90分）</li>
+        <li>AI導入戦略の策定・実行支援</li>
+        <li>社内AI推進担当者の育成</li>
+        <li>無制限チャットサポート</li>
+        <li>月次進捗レポート＋経営改善提言</li>
+        <li>補助金活用コンサルティング</li>
+      </ul>
+    </div>
+    <div class="pricing-card">
+      <h3>スポット相談</h3>
+      <div class="pricing-price">要相談</div>
+      <div class="pricing-note">単発 / 1回〜</div>
+      <ul class="pricing-features">
+        <li>AI活用に関する単発相談</li>
+        <li>現状診断・課題整理</li>
+        <li>ツール選定アドバイス</li>
+        <li>スポット研修（2〜3時間）</li>
+      </ul>
+    </div>
+  </div>
+  <p style="text-align:center; margin-top:36px; font-size:0.78rem; color:var(--gray);">
+    ※ 料金は企業規模・支援内容により異なります。まずはお気軽にご相談ください。
+  </p>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="reveal">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="gold-rule"></div>
+  </div>
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">IT知識がなくても利用できますか？</span>
+        <span class="faq-icon">
+          <svg viewBox="0 0 12 12" fill="none">
+            <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </button>
+      <div class="faq-a">
+        <p>はい、問題ありません。TRIXIAはIT専門家が不在の中小企業を多数支援してきました。専門知識がなくても使えるツール選定から始め、段階的にスキルアップできるよう設計されています。まずは現状をそのままお聞かせください。</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">北海道以外の企業でも利用できますか？</span>
+        <span class="faq-icon">
+          <svg viewBox="0 0 12 12" fill="none">
+            <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </button>
+      <div class="faq-a">
+        <p>もちろん対応可能です。すべてのサービスは完全オンライン（Zoom・Chatworkなど）で提供しているため、全国どこからでもご利用いただけます。北海道外のお客様も歓迎しています。</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">12ヶ月続けられるか不安です。途中解約はできますか？</span>
+        <span class="faq-icon">
+          <svg viewBox="0 0 12 12" fill="none">
+            <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </button>
+      <div class="faq-a">
+        <p>ご安心ください。契約条件については個別にご相談のうえ決定します。まずは無料相談でプログラムの詳細をご説明し、貴社の状況に合ったプランをご提案します。お気軽にご相談ください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-inner reveal">
+    <span class="section-label">CONTACT</span>
+    <h2 class="section-title light">まずは無料相談から<br>始めましょう</h2>
+    <p class="cta-sub">
+      AIで何ができるか、自社にどう活かせるか——<br>
+      疑問・不安はすべて無料相談でお聞きします。<br>
+      北海道の中小企業の未来を、一緒に変えましょう。
+    </p>
+    <a href="mailto:info@trixia.co.jp" class="cta-btn">無料相談を申し込む →</a>
+    <p class="cta-note">完全無料・強引な営業は一切行いません</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo">TRIXIA</div>
+      <p>AIで、北海道を日本の最前線へ。</p>
+    </div>
+    <div class="footer-info">
+      <p>株式会社TRIXIA</p>
+      <p>〒060-0041 北海道札幌市中央区大通東7丁目12-15<br>ノースシティアンザイ</p>
+      <p>AI導入支援顧問サービス</p>
+    </div>
+  </div>
+  <p class="footer-copy">© 2025 TRIXIA Inc. All Rights Reserved.</p>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Staggered reveal for children
+  document.querySelectorAll('.problem-grid, .strength-list, .flow-steps, .pricing-cards').forEach(grid => {
+    const children = grid.children;
+    Array.from(children).forEach((child, i) => {
+      child.style.transitionDelay = `${i * 0.1}s`;
+    });
+  });
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Smooth anchor
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
