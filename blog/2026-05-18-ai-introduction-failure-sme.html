@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中小企業がAI導入で失敗する3つの理由と、現場に定着させる方法｜TRIXIA</title>
+  <meta name="description" content="ChatGPTを導入したのに誰も使っていない。よくある話です。北海道の中小企業でAI定着支援を行うTRIXIAが、失敗パターンと現場に根付かせる具体的なアプローチを解説します。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://trixia-lp.vercel.app/blog/2026-05-18-ai-introduction-failure-sme.html">
+
+  <!-- OGP -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://trixia-lp.vercel.app/blog/2026-05-18-ai-introduction-failure-sme.html">
+  <meta property="og:title" content="中小企業がAI導入で失敗する3つの理由と、現場に定着させる方法｜TRIXIA">
+  <meta property="og:description" content="ChatGPTを導入したのに誰も使っていない。よくある話です。北海道の中小企業でAI定着支援を行うTRIXIAが、失敗パターンと現場に根付かせる具体的なアプローチを解説します。">
+  <meta property="og:site_name" content="株式会社TRIXIA｜北海道のAI導入支援">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "中小企業がAI導入で失敗する3つの理由と、現場に定着させる方法",
+    "description": "ChatGPTを導入したのに誰も使っていない。北海道の中小企業でAI定着支援を行うTRIXIAが、失敗パターンと現場に根付かせる具体的なアプローチを解説します。",
+    "datePublished": "2026-05-18",
+    "dateModified": "2026-05-18",
+    "author": {
+      "@type": "Organization",
+      "name": "株式会社TRIXIA",
+      "url": "https://trixia-lp.vercel.app/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "株式会社TRIXIA",
+      "url": "https://trixia-lp.vercel.app/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://trixia-lp.vercel.app/blog/2026-05-18-ai-introduction-failure-sme.html"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream:        #f6f1ea;
+      --cream-deep:   #efe7da;
+      --paper:        #fbf8f3;
+      --ink:          #2b2218;
+      --ink-soft:     #6b5d4f;
+      --ink-mute:     #9a8c7a;
+      --terracotta:   #d97757;
+      --terracotta-d: #c25c3a;
+      --honey:        #e3b16a;
+      --moss:         #5d7a5a;
+      --line:         rgba(43,34,24,0.10);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', -apple-system, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.85;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(246,241,234,0.90);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-weight: 900;
+      font-size: 1rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-logo .mark {
+      width: 30px; height: 30px;
+      background: var(--terracotta);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 900;
+    }
+    .nav-cta {
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--terracotta); }
+
+    /* ARTICLE LAYOUT */
+    .article-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      font-size: 0.72rem;
+      color: var(--ink-mute);
+      margin-bottom: 32px;
+    }
+    .breadcrumb a { color: var(--ink-mute); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--terracotta); }
+    .breadcrumb span { margin: 0 6px; }
+
+    /* HEADER */
+    .article-header { margin-bottom: 48px; }
+    .article-tag {
+      display: inline-block;
+      font-size: 0.70rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--terracotta);
+      border: 1.5px solid var(--terracotta);
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+    .article-header h1 {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      line-height: 1.45;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .article-meta {
+      font-size: 0.76rem;
+      color: var(--ink-mute);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* LEAD */
+    .article-lead {
+      background: var(--cream-deep);
+      border-left: 3px solid var(--terracotta);
+      padding: 20px 24px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 48px;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      line-height: 1.9;
+    }
+
+    /* BODY */
+    .article-body h2 {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin: 52px 0 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--cream-deep);
+      position: relative;
+    }
+    .article-body h2::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--terracotta);
+    }
+    .article-body p {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      line-height: 1.95;
+      margin-bottom: 20px;
+    }
+    .article-body strong { color: var(--ink); font-weight: 700; }
+
+    .point-box {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .point-box .point-label {
+      font-size: 0.70rem;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      color: var(--terracotta);
+      margin-bottom: 10px;
+    }
+    .point-box p {
+      margin-bottom: 0;
+      font-size: 0.93rem;
+    }
+
+    /* SUMMARY */
+    .article-summary {
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 16px;
+      padding: 32px 36px;
+      margin: 56px 0 48px;
+    }
+    .article-summary .summary-label {
+      font-size: 0.70rem;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      color: var(--honey);
+      margin-bottom: 14px;
+    }
+    .article-summary h3 {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--paper);
+      margin-bottom: 14px;
+    }
+    .article-summary ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .article-summary ul li {
+      font-size: 0.88rem;
+      color: rgba(251,248,243,0.80);
+      padding-left: 18px;
+      position: relative;
+    }
+    .article-summary ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--honey);
+    }
+
+    /* CTA */
+    .article-cta {
+      background: var(--cream-deep);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 36px;
+      text-align: center;
+    }
+    .article-cta .cta-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      color: var(--terracotta);
+      margin-bottom: 10px;
+    }
+    .article-cta h3 {
+      font-family: 'Zen Kaku Gothic New', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .article-cta p {
+      font-size: 0.86rem;
+      color: var(--ink-soft);
+      margin-bottom: 22px;
+      line-height: 1.8;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--terracotta);
+      color: white;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 14px 32px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .cta-btn:hover { background: var(--terracotta-d); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 0.76rem;
+      color: var(--ink-mute);
+      border-top: 1px solid var(--line);
+    }
+    footer a { color: var(--ink-mute); text-decoration: none; }
+    footer a:hover { color: var(--terracotta); }
+
+    @media (max-width: 600px) {
+      .article-wrap { padding: 100px 20px 60px; }
+      .article-cta { padding: 28px 20px; }
+      .article-summary { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="mark">TX</div>
+    TRIXIA
+  </a>
+  <a href="/#cta" class="nav-cta">無料相談する</a>
+</nav>
+
+<div class="article-wrap">
+
+  <div class="breadcrumb">
+    <a href="/">ホーム</a>
+    <span>›</span>
+    <a href="/blog/">ブログ</a>
+    <span>›</span>
+    中小企業がAI導入で失敗する3つの理由
+  </div>
+
+  <header class="article-header">
+    <div class="article-tag">AI導入・定着</div>
+    <h1>中小企業がAI導入で失敗する3つの理由と、現場に定着させる方法</h1>
+    <div class="article-meta">
+      <span>2026年5月18日</span>
+      <span>株式会社TRIXIA</span>
+    </div>
+  </header>
+
+  <div class="article-lead">
+    「ChatGPTのアカウントを作ったけど、結局誰も使っていない」——北海道の中小企業経営者から、この言葉を何度も聞いてきました。AI導入は「ツールを入れること」ではなく「使いこなすこと」です。この記事では、現場でよく見る失敗パターンと、定着させるための考え方を整理します。
+  </div>
+
+  <div class="article-body">
+
+    <h2>① ツールを入れただけで終わる「導入したつもり」問題</h2>
+    <p>
+      AI導入の失敗で最も多いのが、<strong>選定・購入フェーズで力尽きてしまう</strong>パターンです。経営者が「よし、ChatGPTを使おう」と決め、アカウントを作り、社員に周知する。しかしその後、実際に業務でどう使うかを設計しないまま時間が過ぎていく。
+    </p>
+    <p>
+      ツールは揃っているのに現場では何も変わっていない——これは「導入の失敗」ではなく、<strong>「活用設計がなかった」</strong>というのが正確な診断です。AIツールは、業務のどの部分に当てはめるかを具体的に決めて初めて価値が出ます。
+    </p>
+
+    <div class="point-box">
+      <div class="point-label">POINT</div>
+      <p>「何に使うか」ではなく「どの業務の、どのステップで使うか」まで落とし込んでから導入する。</p>
+    </div>
+
+    <h2>② 現場が動かない理由は「押し付け感」にある</h2>
+    <p>
+      上から「これを使え」と指示されたAIツールには、現場から抵抗が生まれます。特に「今のやり方の何が悪いのか」が伝わっていない場合、社員はAIを脅威として捉えがちです。
+    </p>
+    <p>
+      TRIXIAが北海道の中小企業でAI定着支援を行う中で気づいたのは、<strong>最初に選ぶ業務が定着率を決める</strong>ということです。議事録の自動作成や定型メールの下書きなど、「これは確かに楽になった」と感じやすい業務から始めると、社員がAIを自分ごとに捉え始めます。
+    </p>
+    <p>
+      成功体験を一つ作ることで、次の業務への応用が社員から自発的に生まれる。この順番が逆になると、どれだけ良いツールを入れても現場には根付きません。
+    </p>
+
+    <div class="point-box">
+      <div class="point-label">POINT</div>
+      <p>最初の対象業務は「社員が楽になったと実感できるもの」に絞る。難易度より体験を優先する。</p>
+    </div>
+
+    <h2>③ 成果が出ない会社に共通する「測定不在」</h2>
+    <p>
+      AI活用がうまくいっているかどうかを測る指標がない会社は、改善のサイクルが回りません。「なんとなく使っている」状態では、成果も見えなければ課題も見えない。
+    </p>
+    <p>
+      具体的には、<strong>導入前後の時間を数字で比較する</strong>ことが有効です。たとえば「議事録作成：60分 → 8分」「見積書の初稿：90分 → 15分」といった数字を取り始めると、社内でAIの価値が共有されやすくなります。また、うまくいっていない業務も早期に特定でき、やり方を変える判断ができます。
+    </p>
+    <p>
+      測定は難しくありません。最初は作業前後の時間をメモするだけで十分です。大切なのは、<strong>変化を見える化する習慣を作ること</strong>です。
+    </p>
+
+    <div class="point-box">
+      <div class="point-label">POINT</div>
+      <p>導入前の所要時間を記録しておき、1ヶ月後に比較する。数字があるとチームの納得感が変わる。</p>
+    </div>
+
+    <h2>④ なぜ「12ヶ月伴走」が必要なのか</h2>
+    <p>
+      AI定着の難しさは、<strong>業務も人も変化し続ける</strong>点にあります。最初にうまくいった活用方法が、半年後には合わなくなっていることは珍しくありません。担当者が変わった、業務フローが変わった、新しいツールが出た——こうした変化に合わせてAI活用も更新する必要があります。
+    </p>
+    <p>
+      3ヶ月の短期支援で「あとは自分でやってください」となるケースでは、ほとんどの場合、半年後には元の状態に戻っています。TRIXIAが12ヶ月という期間にこだわる理由はここにあります。現場の変化に合わせて継続的に設計し直す、これが「自走できる状態」を作る唯一の方法です。
+    </p>
+
+  </div>
+
+  <div class="article-summary">
+    <div class="summary-label">まとめ</div>
+    <h3>AI導入で失敗しないための3つのポイント</h3>
+    <ul>
+      <li>「何のツールを入れるか」より「どの業務のどのステップで使うか」を先に決める</li>
+      <li>最初の業務は「社員が楽になったと感じやすいもの」から始め、成功体験を作る</li>
+      <li>導入前後の時間を記録して変化を数字で見える化し、改善サイクルを回す</li>
+    </ul>
+  </div>
+
+  <div class="article-cta">
+    <div class="cta-label">TRIXIA 無料相談</div>
+    <h3>「うちの業務、どこから始めればいい？」</h3>
+    <p>
+      現状の業務を聞かせていただき、AIで効果が出やすい領域と<br>
+      期待できるリターンをわかりやすくご提示します。<br>
+      初回60分・完全無料・強引な営業なし。
+    </p>
+    <a href="/#cta" class="cta-btn">無料相談を申し込む</a>
+  </div>
+
+</div>
+
+<footer>
+  <p><a href="/">株式会社TRIXIA</a> &copy; 2026 All rights reserved.</p>
+</footer>
+
+</body>
+</html>
